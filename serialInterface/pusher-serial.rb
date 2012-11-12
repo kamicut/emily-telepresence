@@ -9,6 +9,7 @@ usbmodem = ARGV[0]
 sp = SerialPort.new(usbmodem, 1200)
 
 # Define emily parser for control data
+# FORMAT: {'control': 'w', 'number': 100}
 def emilyControl(data, sp)
 	parsedData = JSON.parse(data)
 	control = parsedData['control']
@@ -25,7 +26,7 @@ end
 
 # Setup Pusher Client
 PusherClient.logger = Logger.new(STDOUT)
-options = {:secret => '731b1c0abdc4b529b579'} 
+options = {:secret => ''} 
 socket = PusherClient::Socket.new('6af61db87df1695de8d2', options)
 
 # Subscribe to emily channel
